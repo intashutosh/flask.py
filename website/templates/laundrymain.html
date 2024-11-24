@@ -1,0 +1,151 @@
+{% extends "laundrybase.html" %}
+{% block title %} Laundry Dashboard {% endblock %}
+{% block content %}
+
+<h2 class="text-center" style="color: #020f1d; font-weight: bold;">Laundry Management - Employee Dashboard</h2>
+
+
+<!-- Search Form -->
+<div class="search-form">
+    <form method="GET" action="{{ url_for('views.laundry_management') }}">
+        <label for="search" style="color: #f4f7f9; font-weight: bold;">Search by LEN or Email:</label>
+        <input type="text" id="search" name="query" placeholder="Enter LEN or Email" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<!-- Table displaying cloth entries -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="color: #f1f3f5;">Cloth Details</th>
+            <th style="color: #fcfdfe;">Actions & Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cloth, student in cloth_entries %}
+        <tr>
+            <td style="vertical-align: top;">
+                <p><strong>Student Name:</strong> {{ student.name }}</p>
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>LEN:</strong> {{ student.Len }}</p>
+                <form method="POST" action="{{ url_for('views.update_cloth_details') }}">
+                    <input type="hidden" name="cloth_id" value="{{ cloth.id }}">
+                    <div>
+                        <label>Kurta:</label> <input type="number" name="kurta" value="{{ cloth.kurta }}" min="0"><br>
+                        <label>Pajama:</label> <input type="number" name="pajama" value="{{ cloth.pajama }}" min="0"><br>
+                        <label>Shirt:</label> <input type="number" name="shirt" value="{{ cloth.shirt }}" min="0"><br>
+                        <label>T-shirt:</label> <input type="number" name="tshirt" value="{{ cloth.tshirt }}" min="0"><br>
+                        <label>Pant:</label> <input type="number" name="pant" value="{{ cloth.pant }}" min="0"><br>
+                        <label>Lower:</label> <input type="number" name="lower" value="{{ cloth.lower }}" min="0"><br>
+                        <label>Shorts:</label> <input type="number" name="shorts" value="{{ cloth.shorts }}" min="0"><br>
+                        <label>Bed Sheet:</label> <input type="number" name="bedsheet" value="{{ cloth.bedsheet }}" min="0"><br>
+                        <label>Pillow Cover:</label> <input type="number" name="pillowcover" value="{{ cloth.pillowcover }}" min="0"><br>
+                        <label>Towel:</label> <input type="number" name="towel" value="{{ cloth.towel }}" min="0"><br>
+                        <label>Dupatta:</label> <input type="number" name="duppata" value="{{ cloth.duppata }}" min="0"><br>
+                    </div>
+            </td>
+            <td style="vertical-align: top;">
+                <p><strong>Status:</strong></p>
+                <select name="status" style="border-radius: 5px; padding: 8px; width: 100%; background-color: #f1f1f1;">
+                    <option value="pending" {% if cloth.status == 'pending' %}selected{% endif %}>Pending</option>
+                    <option value="dropped" {% if cloth.status == 'dropped' %}selected{% endif %}>Dropped</option>
+                    <option value="completed" {% if cloth.status == 'washed' %}selected{% endif %}>Completed</option>
+                    <option value="pickedup" {% if cloth.status == 'recieved' %}selected{% endif %}>Picked Up</option>
+                </select>
+                <br><br>
+                <button type="submit" class="btn btn-primary btn-block">Update</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<style>
+    /* Dashboard Styling */
+    h2 {
+        font-family: 'Arial', sans-serif;
+        color: #007BFF;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Search Form Styling */
+    .search-form {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .search-form input {
+        padding: 10px;
+        border-radius: 5px;
+        width: 60%;
+        margin-right: 10px;
+        border: 1px solid #007BFF;
+    }
+
+    .search-form button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #0048ff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-form button:hover {
+        background-color: #0600b3;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #2421f0;
+        color: white;
+    }
+
+    table td {
+        background-color: #f9f9f9;
+    }
+
+    /* Input fields inside form */
+    input[type="number"], select {
+        border-radius: 5px;
+        padding: 8px;
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+    }
+
+    /* Button styling */
+    .btn-primary {
+        background-color: #1e36ec;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #1041e0;
+    }
+</style>
+
+{% endblock %}
+
+

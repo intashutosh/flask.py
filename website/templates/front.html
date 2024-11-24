@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student and Employee Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd; /* Bluish background color */
+            color: #333;
+        }
+
+        header {
+            background-color: #0f46d3;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2em;
+            text-align: center;
+        }
+
+        form {
+            margin: 1em 0;
+        }
+
+        button {
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7em 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Student Button */
+        form:nth-child(1) button {
+            background: linear-gradient(45deg, #98ec6b, #08c24c);
+            color: white;
+        }
+
+        form:nth-child(1) button:hover {
+            background: linear-gradient(45deg, #9af664, #05aa07);
+        }
+
+        /* Employee Button */
+        form:nth-child(2) button {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+            color: white;
+        }
+
+        form:nth-child(2) button:hover {
+            background: linear-gradient(45deg, #ffb74d, #e65100);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bennett Laundry System</h1>
+    </header>
+    <div class="container">
+        <form action="{{url_for('views.laundry_management')}}">
+            <button type="submit">Employee</button>
+        </form>
+        <form action="{{url_for('views.home')}}">
+            <button type="submit">Student</button>
+        </form>
+    </div>
+</body>
+</html>
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Student and Employee Portal</title>
+     <style>
+         body {
+             font-family: 'Arial', sans-serif;
+             margin: 0;
+             padding: 0;
+             background-color: #f0f4f8; /* Light grayish-blue background */
+             color: #333;
+         }
+ 
+         header {
+             background-color: #1a237e; /* Dark blue background */
+             color: #fff;
+             padding: 2em 0;
+             text-align: center;
+         }
+ 
+         header h1 {
+             font-size: 2.5em; /* Large font size for the title */
+             font-weight: bold;
+             margin: 0;
+         }
+ 
+         .container {
+             padding: 3em;
+             text-align: center;
+         }
+ 
+         form {
+             margin: 1.5em 0;
+         }
+ 
+         button {
+             font-size: 1.2em; /* Slightly larger font for buttons */
+             font-weight: bold;
+             border: none;
+             border-radius: 8px;
+             padding: 0.8em 2em;
+             cursor: pointer;
+             transition: background-color 0.3s ease, transform 0.2s ease;
+         }
+ 
+         button:hover {
+             transform: scale(1.1); /* More pronounced hover effect */
+         }
+ 
+         button:focus {
+             outline: none;
+         }
+ 
+         /* Student Button */
+         form:nth-child(1) button {
+             background: linear-gradient(90deg, #4caf50, #2e7d32); /* Green gradient */
+             color: white;
+         }
+ 
+         form:nth-child(1) button:hover {
+             background: linear-gradient(90deg, #66bb6a, #1b5e20); /* Brighter green hover */
+         }
+ 
+         /* Employee Button */
+         form:nth-child(2) button {
+             background: linear-gradient(90deg, #ffa726, #fb8c00); /* Orange gradient */
+             color: white;
+         }
+ 
+         form:nth-child(2) button:hover {
+             background: linear-gradient(90deg, #ffb74d, #e65100); /* Brighter orange hover */
+         }
+     </style>
+ </head>
+ <body>
+     <header>
+         <h1>Bennett Laundry System</h1>
+     </header>
+     <div class="container">
+         <form action="{{url_for('views.laundry_management')}}">
+             <button type="submit">Employee</button>
+         </form>
+         <form action="{{url_for('views.home')}}">
+             <button type="submit">Student</button>
+         </form>
+     </div>
+ </body>
+ </html>
+ 

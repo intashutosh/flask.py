@@ -1,0 +1,68 @@
+{% extends "laundrybase.html" %} 
+{% block title %} Employee Login {% endblock %}
+
+{% block content %}
+<form method="POST" class="login-form">
+    <h1 class="text-center" style="color: #007BFF;">Employee Login</h1>
+    <br>
+    <div class="form-group">
+        <label for="email" style="color: #495057;">Email</label>
+        <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+            style="border: 1px solid #007BFF;"
+        />
+    </div>
+    <div class="form-group">
+        <label for="password" style="color: #495057;">Password</label>
+        <input 
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            style="border: 1px solid #007BFF;"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+</form>
+
+<style>
+    .login-form {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 400px;
+        margin: 50px auto;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form h1 {
+        font-family: 'Arial', sans-serif;
+        color: #007BFF;
+        font-size: 2rem;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+    .btn-primary {
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

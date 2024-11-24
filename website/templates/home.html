@@ -1,9 +1,188 @@
-{% extends "base.html" %} {% block  title %}Home{%endblock%}
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
 {% block content %}
-<h1 align="centre">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
+<style>
+    /* Background Styling */
+    body {
+        background-color: #f0f8ff; /* Soft light blue background */
+        font-family: 'Arial', sans-serif; /* Clean sans-serif font */
+    }
 
+    /* Form Styling */
+    form {
+        background: #ffffff; /* White form background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin: auto;
+        margin-top: 50px;
+    }
 
-</ul>
+    h1 {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: #007BFF; /* Laundry-inspired blue color */
+    }
+
+    label {
+        font-weight: bold;
+        color: #333333; /* Dark gray for readability */
+    }
+
+    input[type="number"] {
+        border: 1px solid #007BFF; /* Blue border */
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #007BFF; /* Primary blue button */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    /* Status Message */
+    p {
+        text-align: center;
+        font-size: 18px;
+        color: #28a745; /* Green for success status */
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+{% if cloth_detail is none or cloth_detail.status == "recieved" %}
+    <form method="post">
+        <h1 align="center">Cloth details</h1>
+        <div class="form-group">
+            <label for="kurta">Kurta</label>
+            <input
+                type="number"
+                class="form-group"
+                id="kurta"
+                name="kurta"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="pajama">Pajama</label>
+            <input
+                type="number"
+                class="form-group"
+                id="pajama"
+                name="pajama"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="shirt">Shirt</label>
+            <input
+                type="number"
+                class="form-group"
+                id="shirt"
+                name="shirt"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="tshirt">T-Shirt</label>
+            <input
+                type="number"
+                class="form-group"
+                id="tshirt"
+                name="tshirt"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="pant">Pant</label>
+            <input
+                type="number"
+                class="form-group"
+                id="pant"
+                name="pant"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="lower">Lower</label>
+            <input
+                type="number"
+                class="form-group"
+                id="lower"
+                name="lower"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="shorts">Shorts</label>
+            <input
+                type="number"
+                class="form-group"
+                id="shorts"
+                name="shorts"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="bedsheet">Bedsheet</label>
+            <input
+                type="number"
+                class="form-group"
+                id="bedsheet"
+                name="bedsheet"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="pillowcover">Pillow Cover</label>
+            <input
+                type="number"
+                class="form-group"
+                id="pillowcover"
+                name="pillowcover"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="towel">Towel</label>
+            <input
+                type="number"
+                class="form-group"
+                id="towel"
+                name="towel"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <div class="form-group">
+            <label for="duppata">Duppata</label>
+            <input
+                type="number"
+                class="form-group"
+                id="duppata"
+                name="duppata"
+                placeholder="Enter Qty."
+            />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% else %}
+<p>Status: {{ cloth_detail.status }}</p>
+{% endif %}
 {% endblock %}

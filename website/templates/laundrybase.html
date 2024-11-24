@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Laundry Management System" />
+    <meta name="author" content="Your Name" />
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <title>{% block title %}Home{% endblock %}</title>
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #007BFF; /* Primary blue for navbar */
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f0f8ff !important; /* Lighter blue on hover */
+        }
+
+        .navbar-nav .active {
+            font-weight: bold;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .footer-text {
+            margin-bottom: 0;
+            padding: 10px;
+        }
+
+        .container {
+            padding-top: 30px;
+        }
+
+        .container h1 {
+            font-family: 'Poppins', sans-serif;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+              <a
+                class="nav-item nav-link {% if request.endpoint == 'home' %}active{% endif %}"
+                id="home"
+                href="/laundry_management"
+              >
+                Home
+              </a>
+              <a class="nav-item nav-link" id="logout" href="/laundrylogout">Logout</a>
+              {% else %}
+              <a class="nav-item nav-link {% if request.endpoint == 'login' %}active{% endif %}" id="login" href="/laundrylogin">Login</a>
+              <a class="nav-item nav-link {% if request.endpoint == 'signup' %}active{% endif %}" id="signup" href="/laundrysignup">Sign Up</a>
+              {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p class="footer-text">© 2024 Laundry Management System. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7x9Dfoa/TlEsh4XddrtEtZ3VY7p/ThSHgk0"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+      integrity="sha384-QmPU4a0P4Ibn2URtDzCE/yqUqsZlwNxB+6ug2iim2G4nF5VRGgOXn44Jo7LPTpZe"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>
+
